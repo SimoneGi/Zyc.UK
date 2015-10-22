@@ -1,25 +1,25 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
-  #I am the homepage of the crud
+  
   def index
     @pins = Pin.all
   end
 
-  #I am both read and show
+  #CLIENTSIDE FUNCTION. I am the view that allows users to s read pins. I have  no database function
   def show
   end
 
-  # I am the ui create function
+  # CLIENTSIDE UI & INTERACTION. I am the page that is displayed for user to create a pin
   def new
     @pin = Pin.new
   end
 
- # I am the ui of update function
+ # CLIENTSIDE UI & INTERACTION. I am the page that is displayed for user to create a pin
   def edit
   end
 
-  #I am part of the create function. He is the UI. I am the Java
+  #SERVER SIDE FUNTION. I am the function/java that creates and stores a pin in the database
   def create
     @pin = Pin.new(pin_params)
 
@@ -31,7 +31,7 @@ class PinsController < ApplicationController
     end
   
 
-  
+ #SERVER SIDE FUNCTION. I am the function/java that updates a pin in the database
  def update
     if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin was successfully updated.'
@@ -40,6 +40,7 @@ class PinsController < ApplicationController
     end
   end
 
+  # DATABASE FUNCTION. I have no view for the client I am soley a database function 
   def destroy
     @pin.destroy
     redirect_to pins_url
