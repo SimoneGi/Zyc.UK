@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   
   def index
@@ -12,7 +14,7 @@ class PinsController < ApplicationController
 
   # CLIENTSIDE UI & INTERACTION. I am the page that is displayed for user to create a pin
   def new
-    @pin = Pin.new
+    @pin = current_user.pins.build
   end
 
  # CLIENTSIDE UI & INTERACTION. I am the page that is displayed for user to create a pin
@@ -21,7 +23,7 @@ class PinsController < ApplicationController
 
   #SERVER SIDE FUNTION. I am the function/java that creates and stores a pin in the database
   def create
-    @pin = Pin.new(pin_params)
+    @pin = current_user.pins.build (pin_params)
 
       if @pin.save
         redirect_to @pin, notice: 'Pin was successfully created.' 
@@ -52,8 +54,15 @@ class PinsController < ApplicationController
       @pin = Pin.find(params[:id])
     end
 
+    def correct_user
+      @pin = current_user.pins.find_by(id: params[:id])
+      redirect_to pins_path, notice: "stop stealing" if @pin.nil?
+    end
+
     
     def pin_params
       params.require(:pin).permit(:description)
     end
 end
+
+
