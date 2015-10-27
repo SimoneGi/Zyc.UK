@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def Lola
   end
+
+  def render
+  end
 end

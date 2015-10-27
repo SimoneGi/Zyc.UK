@@ -1,0 +1,36 @@
+<div class="jumbotron center">
+<h1>ZEN NIGHT IS HERE</h1>
+<% if user_signed_in? %>
+# then they is no need to request sign in or log out
+<% else %>
+
+<p>welcome to the inform education platform which is called zyc or bwork it is informal but so what</p>
+<br>
+<br>
+</br>
+<p> Click Here To Be Part of A Night   <%= link_to  "Sign Up", new_user_registration_path, class: "btn btn-success btn-lg" %></p>
+<br>
+<br>
+<br>
+</br>
+<p> Already a member ? <%= link_to "Log In" , new_user_session_path, class: "btn btn-success btn-lg" %></p>
+</div>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+</br>
+<div class="list-group">
+<div class="panel panel-danger">
+  <a href="#" class="list-group-item active">
+    The Bars Tonight
+  </a>
+  <a href="#" class="list-group-item">Lola Lo</a>
+  <a href="#" class="list-group-item">Q Bar</a>
+  <a href="#" class="list-group-item">Box</a>
+  <a href="#" class="list-group-item">Revolutions</a>
+</div>
+
+
+
