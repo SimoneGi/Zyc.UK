@@ -5,7 +5,7 @@ class PinsController < ApplicationController
 
   
   def index
-    @pins = Pin.all
+    @pins = Pin.all.limit(23)
   end
 
   #CLIENTSIDE FUNCTION. I am the view that allows users to s read pins. I have  no database function

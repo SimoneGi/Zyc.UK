@@ -7,15 +7,15 @@
         <div class="panel-body">
         <%= pin.description %>
          </br>
-        <strong><%= pin.user.email if pin.user %></strong>
+        <strong><%= pin.user.name if pin.user %></strong>
         </br>
         <% if pin.user != current_user %>
         <% end %>
         <%= link_to 'Show', pin %>
         <div class="actions">
         <% if pin.user == current_user %>
-        <%= link_to 'Edit', edit_pin_path(pin) %>
-        <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to raw('<span class="glyphicon glyphicon-edit"</span> Edit'), edit_pin_path(pin) %>
+        <%= link_to raw('<span class="glyphicon glyphicon-remove"</span> Trash'), pin, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
         </div>
         </div>
